@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 18:49:38 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/25 20:58:24 by rtari-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	send_signal(int pid, unsigned char c)
 {
 	int	bit;
 
-	bit = 7;  // Start from most significant bit
-	while (bit >= 0)
+	bit = 8;  // Start from most significant bit
+	while (bit > 0)
 	{
 		if (c & (1 << bit))
 		{

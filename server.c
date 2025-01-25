@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 18:18:57 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/25 20:39:47 by rtari-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "libft/libft.h"
 #include "printf/ft_printf.h"
+char			temp[2] = {0, 0};
 
 void	handle_signal(int signal)
 {
 	static unsigned char	create_char;
 	static int			bit_index;
-	static char			*message = NULL;
-	static char			temp[2] = {0, 0};
+	static char			*message;
 
 	create_char |= (signal == SIGUSR1);
 	bit_index++;
@@ -59,4 +59,4 @@ int	main(void)
 	while (1)
 		pause();
 	return (0);
-} 
+}
