@@ -6,49 +6,56 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 17:46:55 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/25 18:49:38 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>  // For kill() function
+#include <stdlib.h>  // Added for exit()
 #include "printf/ft_printf.h"
 #include "libft/libft.h"    // Add this for ft_a
 
-void	send_signal(int pid, unsigned char c)
+static void	send_signal(int pid, unsigned char c)
 {
-	int				i;
-	unsigned char	temp_char;
+	int	bit;
 
-	i = 8;
-	temp_char = c;
-	while (i > 0)
+	bit = 7;  // Start from most significant bit
+	while (bit >= 0)
 	{
-		i--;
-		temp_char = c >> i;
-		if (temp_char % 2 == 0)
-			kill(pid, SIGUSR2);
+		if (c & (1 << bit))
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				exit(1);  // Error handling for kill
+		}
 		else
-			kill(pid, SIGUSR1);
-		usleep(70);
+		{
+			if (kill(pid, SIGUSR2) == -1)
+				exit(1);
+		}
+		bit--;
+		usleep(100);  // Slightly increased delay for better reliability
 	}
 }
 
 int	main(int argc, char *argv[])
 {
-	pid_t		server_pid;
-	const char	*message;
-	int			i;
+	pid_t	server_pid;
+	char	*message;
 
 	if (argc != 3)
 	{
-		ft_printf("FAUX - utilise 2 arguments: %s <pid> <message>\n", argv[0]);
-		exit(0);
+		ft_printf("Error: Usage: %s <server_pid> <message>\n", argv[0]);
+		return (1);
 	}
 	server_pid = ft_atoi(argv[1]);
+	if (server_pid <= 0)
+	{
+		ft_printf("Error: Invalid PID\n");
+		return (1);
+	}
 	message = argv[2];
-	i = 0;
-	while (message[i])
-		send_signal(server_pid, message[i++]);
-	send_signal(server_pid, '\0');
+	while (*message)
+		send_signal(server_pid, *message++);
+	send_signal(server_pid, '\0');  // Send null terminator
 	return (0);
 }
