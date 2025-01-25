@@ -6,11 +6,13 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 15:41:46 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/25 17:50:01 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
 #include "libft/libft.h"
+#include "printf/ft_printf.h"
 
 void	handle_signal(int signal)
 {

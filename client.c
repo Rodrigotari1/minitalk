@@ -6,11 +6,13 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 16:06:55 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/25 17:46:55 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include <signal.h>  // For kill() function
+#include "printf/ft_printf.h"
+#include "libft/libft.h"    // Add this for ft_a
 
 void	send_signal(int pid, unsigned char c)
 {
