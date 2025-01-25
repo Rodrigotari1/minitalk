@@ -10,51 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME_CLIENT = client
-NAME_SERVER = server
-
-SRCS_CLIENT = client.c
-SRCS_SERVER = server.c
-
-OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
-OBJS_SERVER = $(SRCS_SERVER:.c=.o)
-
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+CLIENT_SRCS = client.c
+SERVER_SRCS = server.c
+LIBFT_DIRECTORY = libft
+LIBFT_ARCHIVE = $(LIBFT_DIRECTORY)/libft.a
+CLIENT_NAME = client
+SERVER_NAME = server
 
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+all: $(CLIENT_NAME) $(SERVER_NAME)
 
-PRINTF_DIR = printf
-PRINTF = $(PRINTF_DIR)/libftprintf.a
+$(CLIENT_NAME): $(CLIENT_SRCS) $(LIBFT_ARCHIVE)
+	$(CC) $(CFLAGS) -o $@ $(CLIENT_SRCS) -L$(LIBFT_DIRECTORY) -lft
 
-all: $(NAME_CLIENT) $(NAME_SERVER)
+$(SERVER_NAME): $(SERVER_SRCS) $(LIBFT_ARCHIVE)
+	$(CC) $(CFLAGS) -o $@ $(SERVER_SRCS) -L$(LIBFT_DIRECTORY) -lft
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
-
-$(PRINTF):
-	make -C $(PRINTF_DIR)
-
-$(NAME_CLIENT): $(OBJS_CLIENT) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS_CLIENT) $(LIBFT) $(PRINTF) -o $(NAME_CLIENT)
-
-$(NAME_SERVER): $(OBJS_SERVER) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS_SERVER) $(LIBFT) $(PRINTF) -o $(NAME_SERVER)
-
-%.o: %.c minitalk.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT_ARCHIVE):
+	$(MAKE) -C $(LIBFT_DIRECTORY)
 
 clean:
-	rm -f $(OBJS_CLIENT) $(OBJS_SERVER)
-	make -C $(LIBFT_DIR) clean
-	make -C $(PRINTF_DIR) clean
+	$(MAKE) -C $(LIBFT_DIRECTORY) clean
 
 fclean: clean
-	rm -f $(NAME_CLIENT) $(NAME_SERVER)
-	make -C $(LIBFT_DIR) fclean
-	make -C $(PRINTF_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIRECTORY) fclean
+	rm -f $(CLIENT_NAME) $(SERVER_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
