@@ -3,53 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/26 13:43:45 by rtari-ca         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:57:11 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "libft/libft.h"
 #include "printf/ft_printf.h"
-char			temp[2] = {0, 0};
 
-void	handle_signal(int signal)
+static char	g_temp[2] = {0, 0};
+
+static void	process_message(unsigned char create_char, char **message)
 {
-	static unsigned char	create_char;
-	static int			bit_index;
-	static char			*message;
+	char	*new_msg;
 
-	create_char |= (signal == SIGUSR1);
+	if (create_char == '\0')
+	{
+		ft_putstr_fd(*message, 1);
+		ft_putchar_fd('\n', 1);
+		free(*message);
+		*message = NULL;
+	}
+	else
+	{
+		g_temp[0] = create_char;
+		if (!*message)
+			*message = ft_strdup(g_temp);
+		else
+		{
+			new_msg = ft_strjoin(*message, g_temp);
+			free(*message);
+			*message = new_msg;
+		}
+	}
+}
+
+static void	handle_signal(int signal)
+{
+	static char				*message;
+	static int				bit_index;
+	static unsigned char	create_char;
+
+	create_char = (create_char << 1) | (signal == SIGUSR1);
 	bit_index++;
 	if (bit_index == 8)
 	{
-		if (create_char == '\0')
-		{
-			ft_putstr_fd(message, 1);
-			ft_putchar_fd('\n', 1);
-			free(message);
-			message = NULL;
-		}
-		else
-		{
-			temp[0] = create_char;
-			if (!message)
-				message = ft_strdup(temp);
-			else
-			{
-				char *new_msg = ft_strjoin(message, temp);
-				free(message);
-				message = new_msg;
-			}
-		}
+		process_message(create_char, &message);
 		bit_index = 0;
 		create_char = 0;
-		}
-	else
-	{
-		create_char <<= 1;
 	}
 }
 

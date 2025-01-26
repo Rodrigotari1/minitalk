@@ -6,11 +6,7 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/01/26 13:41:55 by rtari-ca         ###   ########.fr       */
-=======
-/*   Updated: 2025/01/26 00:21:35 by rodrigo          ###   ########.fr       */
->>>>>>> origin/main
+/*   Updated: 2025/01/26 13:57:11 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +19,10 @@ static void	send_signal(int pid, unsigned char c)
 {
 	int	bit;
 
-<<<<<<< HEAD
 	bit = 7;
 	while (bit >= 0)
-=======
-	bit = 8;
-	while (bit > 0)
->>>>>>> origin/main
 	{
-		if (c & (1 << bit))
+		if ((c >> bit) & 1)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 				exit(1);
