@@ -6,26 +6,26 @@
 /*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/26 11:25:54 by rtari-ca         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:41:55 by rtari-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>  // For kill() function
-#include <stdlib.h>  // Added for exit()
+#include <signal.h>
+#include <stdlib.h>
 #include "printf/ft_printf.h"
-#include "libft/libft.h"    // Add this for ft_a
+#include "libft/libft.h"
 
 static void	send_signal(int pid, unsigned char c)
 {
 	int	bit;
 
-	bit = 7;  // Start from most significant bit
+	bit = 7;
 	while (bit >= 0)
 	{
 		if (c & (1 << bit))
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				exit(1);  // Error handling for kill
+				exit(1);
 		}
 		else
 		{
@@ -33,7 +33,7 @@ static void	send_signal(int pid, unsigned char c)
 				exit(1);
 		}
 		bit--;
-		usleep(100);  // Slightly increased delay for better reliability
+		usleep(100);
 	}
 }
 
