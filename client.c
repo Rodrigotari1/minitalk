@@ -6,7 +6,7 @@
 /*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/25 20:58:24 by rtari-ca         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:25:54 by rtari-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	send_signal(int pid, unsigned char c)
 {
 	int	bit;
 
-	bit = 8;  // Start from most significant bit
-	while (bit > 0)
+	bit = 7;  // Start from most significant bit
+	while (bit >= 0)
 	{
 		if (c & (1 << bit))
 		{
