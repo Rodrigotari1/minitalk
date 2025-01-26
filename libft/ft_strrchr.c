@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:15:11 by rtari-ca          #+#    #+#             */
-/*   Updated: 2024/10/10 17:15:58 by rtari-ca         ###   ########.fr       */
+/*   Updated: 2025/01/26 00:59:19 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strrchr(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == (char)c)
-		last = s;
-	s++;
+			last = s;
+		s++;
 	}
 	if ((char)c == '\0')
 		return ((char *)s);

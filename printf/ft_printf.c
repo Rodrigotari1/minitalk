@@ -6,7 +6,7 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:22:28 by rodrigo           #+#    #+#             */
-/*   Updated: 2024/10/25 14:58:17 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/01/26 00:59:58 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (counter);
 }
-
-/*#include "ft_printf.h"
-
-int main() {
-    ft_printf("Character: %c, String: %s, Integer: %d\n", 'A', "Hello", 42);
-    ft_printf("Unsigned integer: %u, Hexadecimal (lower): %x\n", 1234, 0xDEADBEEF);
-    ft_printf("Hexadecimal (upper): %X, Pointer: %p\n", 0xDEADBEEF, (void *)&main);
-    ft_printf("Percent sign: %%\n");
-    return 0;
-}*/

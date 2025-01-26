@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 20:54:40 by rtari-ca          #+#    #+#             */
-/*   Updated: 2024/10/10 17:19:19 by rtari-ca         ###   ########.fr       */
+/*   Updated: 2025/01/26 00:58:31 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		if (p1[i] != p2[i])
 			return (p1[i] - p2[i]);
-			i++;
+		i++;
 	}
 	return (0);
 }

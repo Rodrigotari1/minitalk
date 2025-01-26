@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtari-ca <rtari-ca@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/26 13:41:55 by rtari-ca         ###   ########.fr       */
+=======
+/*   Updated: 2025/01/26 00:21:35 by rodrigo          ###   ########.fr       */
+>>>>>>> origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +23,13 @@ static void	send_signal(int pid, unsigned char c)
 {
 	int	bit;
 
+<<<<<<< HEAD
 	bit = 7;
 	while (bit >= 0)
+=======
+	bit = 8;
+	while (bit > 0)
+>>>>>>> origin/main
 	{
 		if (c & (1 << bit))
 		{
@@ -56,6 +65,6 @@ int	main(int argc, char *argv[])
 	message = argv[2];
 	while (*message)
 		send_signal(server_pid, *message++);
-	send_signal(server_pid, '\0');  // Send null terminator
+	send_signal(server_pid, '\0');
 	return (0);
 }
