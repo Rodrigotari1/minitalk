@@ -6,7 +6,7 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/01/26 13:57:11 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:10:54 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "printf/ft_printf.h"
 #include "libft/libft.h"
+
 
 static void	send_signal(int pid, unsigned char c)
 {
