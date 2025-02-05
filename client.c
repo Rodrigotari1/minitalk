@@ -6,12 +6,13 @@
 /*   By: rodrigo <rodrigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:00:00 by rodrigo           #+#    #+#             */
-/*   Updated: 2025/02/04 15:10:54 by rodrigo          ###   ########.fr       */
+/*   Updated: 2025/02/05 19:45:25 by rodrigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "printf/ft_printf.h"
 #include "libft/libft.h"
 
